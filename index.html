@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Fisika Nuklir: Reaksi Inti</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <!-- SVG Atom Icon -->
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="10" fill="#66fcf1" />
+                    <ellipse cx="50" cy="50" rx="42" ry="12" stroke="#66fcf1" stroke-width="2.5" fill="none" transform="rotate(30 50 50)" />
+                    <ellipse cx="50" cy="50" rx="42" ry="12" stroke="#66fcf1" stroke-width="2.5" fill="none" transform="rotate(90 50 50)" />
+                    <ellipse cx="50" cy="50" rx="42" ry="12" stroke="#66fcf1" stroke-width="2.5" fill="none" transform="rotate(150 50 50)" />
+                </svg>
+                <h1>FISIKA NUKLIR</h1>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <li class="menu-item active" data-tab="overview">
+                    <button>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        Overview
+                    </button>
+                </li>
+                <li class="menu-item" data-tab="bab1">
+                    <button>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        Bab 1: Klasifikasi
+                    </button>
+                </li>
+                <li class="menu-item" data-tab="bab2">
+                    <button>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+                        Bab 2: Energetika
+                    </button>
+                </li>
+                <li class="menu-item" data-tab="bab3">
+                    <button>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                        Bab 3: Isospin
+                    </button>
+                </li>
+                <li class="menu-item" data-tab="bab4">
+                    <button>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                        Bab 4: Penampang Lintang
+                    </button>
+                </li>
+                <li class="menu-item" data-tab="bab5">
+                    <button>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                        Bab 5: Eksperimen
+                    </button>
+                </li>
+                <li class="menu-item" data-tab="quiz">
+                    <button>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        Latihan Soal Krane
+                    </button>
+                </li>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="progress-widget">
+                    <div class="progress-header">
+                        <span>Progress Belajar</span>
+                        <span id="progress-text">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Viewport -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h2 id="current-tab-title">Overview</h2>
+                <div class="badge-elearning">Modul Interaktif</div>
+            </header>
+
+            <!-- TAB 0: OVERVIEW -->
+            <section class="tab-content active" id="overview-tab">
+                <div class="overview-header-card">
+                    <h3>Selamat Datang di Dashboard Reaksi Nuklir</h3>
+                    <p class="lead">Dashboard ini dirancang untuk membantu Anda memvisualisasikan, mensimulasikan, dan memahami hukum-hukum fisis yang mendasari Reaksi Inti secara interaktif.</p>
+                    <p>Melalui menu navigasi di sebelah kiri, Anda dapat mempelajari klasifikasi reaksi, energetika fisis melalui kalkulator dinamis, simetri isospin, model resonansi Breit-Wigner untuk penampang lintang, serta spektrum radiasi gamma dari detektor semikonduktor. Di bagian akhir, Anda dapat menguji pemahaman Anda dengan kuis evaluasi.</p>
+                </div>
+                
+                <h3>Topik Pembelajaran</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-title">Mekanisme Reaksi</div>
+                        <p>Eksplorasi pembagian skala waktu reaksi inti, mulai dari hamburan elastis instan hingga pembentukan keadaan antara inti majemuk berumur panjang.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Energetika Nilai-Q</div>
+                        <p>Hitung nilai-Q reaksi endotermik dan eksotermik. Simulasikan bagaimana massa diam reaktan memengaruhi energi ambang minimum reaksi.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Simetri & Spektroskopi</div>
+                        <p>Pahami simetri isospin pada inti isobaric cermin, respons resonansi Breit-Wigner, serta cara kerja analisis spektroskopi gamma resolusi tinggi.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 1: KLASIFIKASI -->
+            <section class="tab-content" id="bab1-tab">
+                <h3>Klasifikasi Reaksi Inti</h3>
+                <p>Reaksi inti terjadi ketika partikel proyektil ($a$) menumbuk inti target ($X$), menghasilkan inti residu ($Y$) dan partikel terpancar ($b$). Notasi standarnya ditulis sebagai:</p>
+                
+                <div class="formula-box">
+                    $$X + a \rightarrow Y + b \quad \text{atau} \quad X(a,b)Y$$
+                </div>
+
+                <p>Berdasarkan mekanisme interaksinya, reaksi nuklir dikelompokkan menjadi beberapa fase skala waktu dan skenario benturan. Silakan eksplorasi hierarki mekanismenya pada grafik interaktif di bawah ini dengan mengklik segmen lingkaran untuk melakukan <i>zoom-in/out</i>:</p>
+
+                <div class="chart-wrapper">
+                    <div id="chart-reaction-sunburst"></div>
+                </div>
+
+                <ul class="styled-list">
+                    <li><strong>Hamburan Elastis (Elastic Scattering):</strong> Partikel proyektil dan target tidak berubah identitasnya, dan total energi kinetik sistem bernilai kekal ($Q=0$). Contoh: $X(a,a)X$.</li>
+                    <li><strong>Hamburan Inelastis (Inelastic Scattering):</strong> Sebagian energi kinetik proyektil diserap untuk mengeksitasi tingkat energi inti target. Contoh: $X(a,a')X^*$.</li>
+                    <li><strong>Reaksi Langsung (Direct Reactions):</strong> Proyektil hanya berinteraksi dengan nukleon-nukleon di permukaan target dalam waktu sangat singkat ($\approx 10^{-22}$ s). Meliputi reaksi stripping dan pick-up.</li>
+                    <li><strong>Reaksi Inti Majemuk (Compound Nucleus):</strong> Proyektil melebur sepenuhnya membentuk inti majemuk antara yang berumur lebih panjang ($\approx 10^{-19}$ s) sebelum meluruh dan kehilangan memori proses pembentukannya (Hipotesis Bohr).</li>
+                </ul>
+            </section>
+
+            <!-- TAB 2: ENERGETIKA -->
+            <section class="tab-content" id="bab2-tab">
+                <h3>Energetika Reaksi & Persamaan Nilai-Q</h3>
+                <p>Nilai-$Q$ mendefinisikan selisih energi massa diam antara reaktan dan produk. Nilai ini menentukan apakah reaksi melepaskan energi (eksotermik) atau membutuhkan energi kinetik proyektil agar terjadi (endotermik).</p>
+
+                <div class="formula-box">
+                    $$Q = (m_X + m_a - m_Y - m_b)c^2 \quad \text{atau} \quad Q = T_Y + T_b - T_a$$
+                </div>
+
+                <p>Pada reaksi endotermik ($Q < 0$), reaksi sama sekali tidak akan terjadi kecuali partikel memiliki energi kinetik yang melampaui suatu batas minimum yang disebut <strong>Energi Ambang ($E_{th}$)</strong>:</p>
+
+                <div class="formula-box">
+                    $$E_{th} = |Q| \left(1 + \frac{m_a}{m_X}\right)$$
+                </div>
+
+                <div class="interactive-section split">
+                    <!-- Control Panel untuk Simulator Q-Value -->
+                    <div class="control-panel">
+                        <h4>Simulator & Kalkulator</h4>
+                        <div class="form-group">
+                            <label for="reaction-preset">Pilih Reaksi Preset</label>
+                            <select id="reaction-preset">
+                                <option value="fusi_dt">Fusi D + T -> α + n (Eksotermik)</option>
+                                <option value="fisi_c">p + 14N -> α + 11C (Endotermik)</option>
+                                <option value="be_alpha">α + 9Be -> n + 12C (Eksotermik)</option>
+                                <option value="custom">Kustom (Input Massa Sendiri)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Massa Diam Partikel (u)</label>
+                            <div class="calculator-grid">
+                                <div class="calc-input-box">
+                                    <div>Target m_X</div>
+                                    <input type="number" id="mass-target" step="0.0001" value="14.00307">
+                                </div>
+                                <div class="calc-input-box">
+                                    <div>Proyektil m_a</div>
+                                    <input type="number" id="mass-projectile" step="0.0001" value="1.00782">
+                                </div>
+                                <div class="calc-input-box">
+                                    <div>Produk m_Y</div>
+                                    <input type="number" id="mass-product-y" step="0.0001" value="11.01143">
+                                </div>
+                                <div class="calc-input-box">
+                                    <div>Pancaran m_b</div>
+                                    <input type="number" id="mass-ejectile-b" step="0.0001" value="4.00260">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="calc-results">
+                            <div class="result-row">
+                                <span>Defisit Massa ($\Delta m$):</span>
+                                <span id="val-mass-defect" class="val-badge">0 u</span>
+                            </div>
+                            <div class="result-row highlight">
+                                <span>Nilai-Q Reaksi:</span>
+                                <span id="val-q-value">0 MeV</span>
+                            </div>
+                            <div class="result-row">
+                                <span>Sifat Reaksi:</span>
+                                <span id="val-reaction-type" style="font-weight: 500;">-</span>
+                            </div>
+                            <div class="result-row highlight" id="row-threshold" style="display: none;">
+                                <span>Energi Ambang ($E_{th}$):</span>
+                                <span id="val-threshold">0 MeV</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visualisasi Output Grafik -->
+                    <div class="chart-wrapper">
+                        <div id="chart-q-value"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: ISOSPIN -->
+            <section class="tab-content" id="bab3-tab">
+                <h3>Simetri Isospin & Keadaan Analog Isobarik</h3>
+                <p>Karena proton dan neutron memiliki massa yang hampir identik dan bereaksi sama kuat di bawah pengaruh gaya nuklir kuat, keduanya dianggap sebagai wujud partikel dasar yang sama: <strong>Nukleon</strong>.</p>
+                <p>Nukleon ditetapkan memiliki nilai isospin $T = 1/2$. Proyeksi isospinnya adalah $T_z = +1/2$ untuk neutron dan $T_z = -1/2$ untuk proton. Total proyeksi isospin untuk suatu inti diberikan oleh:</p>
+                
+                <div class="formula-box">
+                    $$T_z = \frac{N - Z}{2}$$
+                </div>
+
+                <p>Pada kelompok inti isobar (nomor massa $A$ sama), tingkat energinya akan sejajar secara simetris setelah dilakukan koreksi terhadap energi repulsi Coulomb. Keadaan yang sejajar ini disebut <strong>Keadaan Analog Isobarik (Isobaric Analog States / IAS)</strong>, yang membuktikan simetri gaya nuklir terhadap isospin.</p>
+
+                <div class="chart-wrapper">
+                    <div id="chart-isospin"></div>
+                </div>
+                <p style="margin-top: 20px;">Grafik di atas menunjukkan multiplet triad isospin untuk nomor massa $A=14$. Klik atau hover pada diamond di grafik untuk membandingkan tingkat eksitasi relatif dari keadaan analog pada isotop $^{14}\text{C}$, $^{14}\text{N}^*$ (eksitasi), dan $^{14}\text{O}$.</p>
+            </section>
+
+            <!-- TAB 4: PENAMPANG LINTANG -->
+            <section class="tab-content" id="bab4-tab">
+                <h3>Penampang Lintang Reaksi & Formula Resonansi Breit-Wigner</h3>
+                <p>Penampang lintang ($\sigma$) mengukur probabilitas terjadinya suatu reaksi inti (satuannya <i>barn</i> = $10^{-28}\text{ m}^2$). Ketika energi kinetik proyektil selaras dengan tingkat energi eksitasi dari inti majemuk, penampang lintang akan melonjak tajam membentuk puncak resonansi.</p>
+                <p>Respons serapan resonansi ini dimodelkan secara matematis dengan distribusi Breit-Wigner satu tingkat:</p>
+
+                <div class="formula-box">
+                    $$\sigma(E) = \pi \lambda^2 \frac{\Gamma_a \Gamma_b}{(E - E_r)^2 + (\Gamma/2)^2}$$
+                </div>
+
+                <div class="interactive-section split">
+                    <!-- Panel Slider untuk Resonansi Breit-Wigner -->
+                    <div class="control-panel">
+                        <h4>Parameter Resonansi</h4>
+                        <div class="form-group">
+                            <div class="label-flex">
+                                <label for="slide-er">Energi Resonansi ($E_r$)</label>
+                                <span class="val-badge" id="badge-er">50.0 MeV</span>
+                            </div>
+                            <input type="range" id="slide-er" min="30" max="70" step="0.5" value="50">
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Pusat energi terjadinya penampang lintang maksimum.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-flex">
+                                <label for="slide-gamma">Lebar Resonansi ($\Gamma$)</label>
+                                <span class="val-badge" id="badge-gamma">4.0 MeV</span>
+                            </div>
+                            <input type="range" id="slide-gamma" min="1" max="15" step="0.2" value="4">
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Lebar puncak setengah maksimum (FWHM), berbanding terbalik dengan waktu hidup inti majemuk ($\tau = \hbar/\Gamma$).</span>
+                        </div>
+                    </div>
+
+                    <!-- Plot Penampang Lintang -->
+                    <div class="chart-wrapper">
+                        <div id="chart-cross-section"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: EKSPERIMEN -->
+            <section class="tab-content" id="bab5-tab">
+                <h3>Teknik Eksperimen & Spektroskopi Radiasi Gamma</h3>
+                <p>Fisikawan merekam jejak radiasi hasil reaksi nuklir menggunakan spektrometer. Detektor semikonduktor seperti <strong>High-Purity Germanium (HPGe)</strong> digunakan secara luas karena memiliki resolusi energi yang sangat tinggi.</p>
+                <p>Detektor HPGe menyerap energi foton gamma untuk menghasilkan elektron-hole. Hasil pembacaannya memetakan spektrum energi yang khas dengan karakteristik puncak serapan total (*photopeak*), efek hamburan Compton (*Compton continuum* dan *Compton edge*), serta derau statistik acak.</p>
+
+                <div class="interactive-section split">
+                    <!-- Control Panel Pilihan Isotop -->
+                    <div class="control-panel">
+                        <h4>Sumber Radioaktif</h4>
+                        <div class="form-group">
+                            <label for="isotope-select">Pilih Isotop Pemancar Gamma</label>
+                            <select id="isotope-select">
+                                <option value="co60">Cobalt-60 (⁶⁰Co)</option>
+                                <option value="cs137">Caesium-137 (¹³⁷Cs)</option>
+                                <option value="na22">Sodium-22 (²²Na)</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-results">
+                            <div class="result-row">
+                                <span>Mode Peluruhan:</span>
+                                <span id="iso-decay-mode" class="val-badge">-</span>
+                            </div>
+                            <div class="result-row">
+                                <span>Waktu Paruh ($T_{1/2}$):</span>
+                                <span id="iso-halflife" class="val-badge">-</span>
+                            </div>
+                            <div class="result-row highlight" style="flex-direction: column; gap: 4px;">
+                                <span>Fotopuncak Utama ($E_\gamma$):</span>
+                                <span id="iso-energies" style="font-family: var(--font-mono); font-size: 0.85rem; margin-top: 4px;">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plot Spektrum HPGe -->
+                    <div class="chart-wrapper">
+                        <div id="chart-hpge"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 6: KUIS EVALUASI -->
+            <section class="tab-content" id="quiz-tab">
+                <div id="quiz-container">
+                    <!-- Tampilan Awal Kuis -->
+                    <div class="quiz-welcome" id="quiz-intro">
+                        <h3>Latihan Soal Buku Kenneth S. Krane (1988)</h3>
+                        <p>Pecahkan masalah fisis nyata dari buku materi standar <i>Introductory Nuclear Physics</i> oleh Kenneth S. Krane (1988) untuk menguji pemahaman teoretis Anda tentang reaksi nuklir secara mendalam.</p>
+                        <p style="margin-bottom: 30px;">Problem set ini mencakup Energetika Reaksi, Simetri Isospin & Peluruhan Beta, serta Hukum Kekekalan Reaksi.</p>
+                        <button class="btn-primary" id="btn-start-quiz">Mulai Latihan</button>
+                    </div>
+
+                    <!-- Tampilan Soal Kuis (Hidden by default) -->
+                    <div class="quiz-card" id="quiz-card" style="display: none;">
+                        <div class="quiz-meta">
+                            <span id="quiz-progress-text">Soal 1 dari 3</span>
+                            <span id="quiz-score-text">Skor: 0</span>
+                        </div>
+                        <div class="quiz-question" id="quiz-question-text">Pertanyaan akan muncul di sini...</div>
+                        <div class="quiz-options" id="quiz-options-container">
+                            <!-- Tombol pilihan ganda akan diinjeksi via JS -->
+                        </div>
+                        <div class="quiz-feedback" id="quiz-feedback-box">
+                            <h5 id="quiz-feedback-title">Benar!</h5>
+                            <div id="quiz-feedback-text" style="font-size: 0.95rem; line-height: 1.6;">Pembahasan jawaban...</div>
+                        </div>
+                        <div class="quiz-actions">
+                            <button class="btn-primary" id="btn-next-question" style="display: none;">Pertanyaan Berikutnya</button>
+                        </div>
+                    </div>
+
+                    <!-- Tampilan Hasil Akhir Kuis (Hidden by default) -->
+                    <div class="quiz-results-card card" id="quiz-results" style="display: none;">
+                        <h3>Hasil Latihan Anda</h3>
+                        <p style="margin-bottom: 25px;">Latihan selesai! Berikut adalah hasil evaluasi latihan Anda:</p>
+                        <div class="score-circle">
+                            <span class="score-number" id="quiz-final-score">0</span>
+                            <span class="score-total">dari 100</span>
+                        </div>
+                        <p id="quiz-performance-comment" class="lead" style="text-align: center; margin-bottom: 30px;">Kerja bagus!</p>
+                        <button class="btn-primary" id="btn-restart-quiz">Ulangi Latihan</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Load Plotly and MathJax -->
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    
+    <!-- Load custom JavaScript Logic -->
+    <script src="script.js"></script>
+</body>
+
+</html>
